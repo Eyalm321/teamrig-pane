@@ -1,9 +1,13 @@
+import { createRequire } from 'node:module';
 import { join, resolve } from 'node:path';
 import type { Git } from '../lib/git.ts';
 import type { LocalCheck } from './local-gate.ts';
 
-/** TypeScript's compiler, run by this Node (npm cannot be spawned without a shell on Windows). */
-const TSC = 'node_modules/typescript/bin/tsc';
+/**
+ * TypeScript's compiler, run by this Node (npm cannot be spawned without a shell on Windows). Found as Node finds a
+ * package, from this file up, so a worktree with no node_modules of its own runs its main checkout's, as npm does.
+ */
+export const TSC = createRequire(import.meta.url).resolve('typescript/bin/tsc');
 
 /** The base the commit checks compare with when `--base` is not given. */
 export const DEFAULT_BASE = 'origin/main';
