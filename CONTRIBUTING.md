@@ -1,7 +1,7 @@
 # Contributing
 
 ## Setup
-Node.js 22.18 or later and Claude Code. Then, once per clone:
+Node.js 24.18 or later and Claude Code. Then, once per clone:
 
 ```sh
 npm ci          # also points git at .githooks (npm's prepare runs the setup)
@@ -70,7 +70,7 @@ falls below the floors in `tools/ci/coverage.json`. That file names, each with i
 it does not measure: `hooks/core/` (vendored; teamrig measures it), the files no node test can load
 yet, and the plugin tests only the engine can run. Never lower a floor or add an entry to pass a
 change: add the test. Once the repository is public, CI also runs `npm test` and the plugin
-tests on Linux, Windows and macOS under node 22 and 24, with a pinned Claude Code release
+tests on Linux, Windows and macOS under node 24, with a pinned Claude Code release
 (`.github/workflows/ci.yml`); until then, the local gate runs them on your machine.
 
 `hooks/core/` is a copy of teamrig's read modules at the commit `scripts/teamrig-pin.json` names, made
